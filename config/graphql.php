@@ -208,10 +208,20 @@ return [
         'disable_introspection' => false
     ],
 
-
     'types' => [
         'User' => \App\GraphQL\Type\UserType::class,
         'Bit' => \App\GraphQL\Type\BitType::class,
         'Reply' => \App\GraphQL\Type\ReplyType::class,
+      ],
+
+      'schemas' => [
+        'default' => [
+          // ...
+          'mutation' => [
+            'signUp' => \App\GraphQL\Mutation\SignUpMutation::class,
+            'logIn' => \App\GraphQL\Mutation\LogInMutation::class,
+            'newBit' => \App\GraphQL\Mutation\NewBitMutation::class,
+          ]
+        ]
       ],
 ];
