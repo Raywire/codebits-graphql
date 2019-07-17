@@ -216,12 +216,15 @@ return [
 
       'schemas' => [
         'default' => [
-          // ...
           'mutation' => [
             'signUp' => \App\GraphQL\Mutation\SignUpMutation::class,
             'logIn' => \App\GraphQL\Mutation\LogInMutation::class,
             'newBit' => \App\GraphQL\Mutation\NewBitMutation::class,
-          ]
+          ],
+          'query' => [
+            'allBits' => \App\GraphQL\Query\AllBitsQuery::class,
+            'bitById' => \App\GraphQL\Query\BitByIdQuery::class,
+          ],
         ]
       ],
 ];
