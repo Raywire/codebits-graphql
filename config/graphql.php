@@ -181,8 +181,10 @@ return [
      * ]
      */
     'types' => [
-
-    ],
+        'User' => \App\GraphQL\Type\UserType::class,
+        'Bit' => \App\GraphQL\Type\BitType::class,
+        'Reply' => \App\GraphQL\Type\ReplyType::class,
+      ],
 
     /*
      * This callable will receive all the Exception objects that are caught by GraphQL.
@@ -207,12 +209,6 @@ return [
         'query_max_depth' => null,
         'disable_introspection' => false
     ],
-
-    'types' => [
-        'User' => \App\GraphQL\Type\UserType::class,
-        'Bit' => \App\GraphQL\Type\BitType::class,
-        'Reply' => \App\GraphQL\Type\ReplyType::class,
-      ],
 
       'schemas' => [
         'default' => [
