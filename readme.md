@@ -2,7 +2,7 @@
 Codebits GraphQL
 
 ## Description
-API for a microblogging platform
+API for a microblogging platform for writing code snippets. A use can like and reply to snippets
 
 ## Running the API
 It's very simple to get the API up and running. First, create the database (and database user if necessary) and add them to the .env file.
@@ -33,8 +33,31 @@ Use this url: http://localhost:8000/graphql
 
 ### Fetch all bits
 ```
-{
+query {
   allBits {
+    id
+    user {
+      name
+    }
+    snippet
+    replies {
+      id
+      user {
+        name
+      }
+      reply
+    }
+    likes_count
+    created_at
+    updated_at
+  }
+}
+```
+
+### Fetch a bit by id
+```
+query {
+  bitById(id: 1) {
     id
     user {
       name
@@ -74,5 +97,47 @@ mutation {
         password: "123456"
     )
 
+}
+```
+
+# Require token authorization
+The mutations below require authorization using the token generated on sign up or login
+### Create a bit
+```
+mutation {
+  newBit(snippet: "<html>Hello world</html>") {
+    id
+    snippet
+  }
+}
+
+```
+
+### Reply to a bit
+```
+mutation {
+  replyBit(bit_id: 1, reply: "Hello world!") {
+    id
+    user {
+      name
+    }
+    bit {
+      snippet
+    }
+    reply
+  }
+}
+```
+
+### Like a bit
+```
+mutation{
+  likeBit(bit_id:1)
+}
+```
+### Unlike a bit
+```
+mutation{
+  unlikeBit(bit_id:1)
 }
 ```
